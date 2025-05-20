@@ -12,6 +12,8 @@ const config = defineConfig({
   expect: { timeout: 5000 },
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
+  fullyParallel: true,
+  workers: process.env.CI ? 1 : undefined,
   reporter: [['html', { open: 'never' }], ['junit', { outputFile: 'results.xml' }]],
   use: {
     trace: 'on-first-retry',
@@ -19,6 +21,8 @@ const config = defineConfig({
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
+    { name: 'webkit', use: { ...devices['Desktop Safari'] } },
   ],
 }) as PlaywrightTestConfig & { custom: CustomConfig };
 
