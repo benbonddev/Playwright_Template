@@ -4,6 +4,9 @@
   "description": "Playwright TypeScript project with Allure reporting",
   "scripts": {
     "test": "playwright test",
+    "test:dev": "playwright test --config=config/dev.config.ts",
+    "test:test": "playwright test --config=config/test.config.ts",
+    "test:staging": "playwright test --config=config/staging.config.ts",
     "allure:generate": "allure generate ./allure-results --clean -o ./allure-report",
     "allure:open": "allure open ./allure-report"
   },
