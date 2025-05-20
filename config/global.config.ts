@@ -14,7 +14,11 @@ const config = defineConfig({
   retries: process.env.CI ? 2 : 0,
   fullyParallel: true,
   workers: process.env.CI ? 1 : undefined,
-  reporter: [['html', { open: 'never' }], ['junit', { outputFile: 'results.xml' }]],
+  reporter: [
+    ['html', { open: 'never' }],
+    ['junit', { outputFile: 'results.xml' }],
+    ['allure-playwright'],
+  ],
   use: {
     trace: 'on-first-retry',
     baseURL: 'https://playwright.dev',
